@@ -77,6 +77,33 @@ To receive real-time notifications for available appointments, you need to confi
    MY_TELEGRAM_BOT_TOKEN=your_telegram_bot_token_here
 ```
 
+### Telegram Webhook Setup
+
+Since this bot uses a webhook to receive incoming messages, Telegram requires a public HTTPS URL to send updates to your backend.
+
+#### 1. Local Development
+If you are running the project locally (on localhost), you must expose your local server to the internet using a tool like [ngrok](https://ngrok.com/).
+
+1. Download and install `ngrok`.
+2. Run the following command in your terminal to create a secure tunnel to your backend port:
+
+```text
+   ngrok http 8000
+```
+
+3. Copy the generated `HTTPS` URL from the `ngrok` terminal output (e.g., `https://<your-id>.ngrok-free.dev`).
+4. Register this URL with Telegram by opening your web browser and pasting the following link (replace the placeholders with your actual Bot Token and ngrok URL):
+
+```text
+   https://api.telegram.org/bot<YOUR_BOT_TOKEN>/setWebhook?url=<YOUR_NGROK_URL>/telegram-webhook
+```
+
+#### 2. Production Deployment
+If you are hosting this project on a live server or a cloud platform, you do not need `ngrok`. Simply replace `<YOUR_NGROK_URL>` in step 4 above with your actual live domain name (e.g., `https://your-website.com`).
+
+
+**Success Check:** If you see a JSON response stating `"Webhook was set"`, your local bot is now ready to receive messages!
+
 ---
 
 ## Disclaimer

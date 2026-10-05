@@ -13,7 +13,7 @@ The application has been heavily decoupled and rewritten into a scalable, asynch
 * **Frontend (UI):** `Streamlit` – Now decoupled from the core logic, serving strictly as the presentation layer.
 * **Backend (API):** `FastAPI` – Handles all business logic, session management, and routing asynchronously.
 * **Task Queue & Active State:** `Redis` – Manages all active background polling jobs, task queues, and real-time session data. It processes user booking data strictly in-memory and wipes it instantly upon task completion, ensuring data privacy.
-* **Database & Synchronization:** `Serverless PostgreSQL` (via `SQLAlchemy`) – Integrated with `Neon` for a lightweight, cloud-managed database solution. It stores core user session preferences and caches service parameters. A dedicated Python synchronization container runs daily at 3:00 AM to update these parameters and minimize redundant requests to the eTermin servers.
+* **Database & Synchronization:** `Serverless PostgreSQL` (via `SQLAlchemy`) – Flexible and can be integrated with any local or cloud-managed PostgreSQL database solution. It stores core user session preferences and caches service parameters. A dedicated Python synchronization container runs daily at 3:00 AM to update these parameters and minimize redundant requests to the eTermin servers.
 * **Scraping Engine:** `curl_cffi` – Used for asynchronous, TLS-impersonated HTTP requests to reliably bypass server security blocks and bot protections.
 * **Infrastructure:** `Docker` & `Docker Compose` – The entire environment is fully containerized, featuring isolated containers for the UI, API, execution workers, and the daily synchronization script.
 
@@ -48,7 +48,7 @@ The entire infrastructure is dockerized for a seamless setup. You do not need to
 
 2. Navigate to the project folder:
    ```bash
-   cd etermin-monitor
+   cd etermin-monitor-fullstack
    ```
 
 3. Configure the environment variables:
@@ -56,7 +56,7 @@ The entire infrastructure is dockerized for a seamless setup. You do not need to
    ```bash
    cp .env.example .env
    ```
-   Open the `.env` file and fill in your necessary credentials (e.g., your Telegram bot token and Neon PostgreSQL connection string).
+   Open the `.env` file and fill in your necessary credentials (e.g., your Telegram bot token and PostgreSQL connection string).
 
 4. Start the application:
    ```bash

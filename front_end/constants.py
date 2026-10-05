@@ -1,0 +1,1 @@
+MY_BOT_USERNAME = "my_appointment_app_bot"

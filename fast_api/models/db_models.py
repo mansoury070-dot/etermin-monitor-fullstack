@@ -1,0 +1,75 @@
+from sqlalchemy import Column, Integer, Boolean, String, DateTime, Text, BigInteger
+from sqlalchemy.orm import declarative_base
+from datetime import datetime, timezone
+
+Base = declarative_base()
+
+
+class Service(Base):
+    __tablename__ = "services"
+
+    serviceid = Column(Integer, primary_key=True, index=True)
+    servicetext = Column(String(255))
+    webid = Column(String(255))
+    servicegroup = Column(String(255))
+    raw_group_name = Column(Text)
+    serviceannotation = Column(Text)
+    duration = Column(Integer)
+    capacity = Column(Integer)
+    captype = Column(Integer)
+    enablecapacity = Column(Boolean)
+    canceldeadline_service = Column(Integer)
+    rh = Column(Integer)
+    rh2 = Column(Integer)
+    cc = Column(Integer)
+    cct = Column(Integer)
+    abb = Column(String(255))
+    limitappointments = Column(Integer)
+    limitappointmentstype = Column(Integer)
+    limitservice = Column(Integer)
+    msdcm = Column(Integer)
+    price = Column(Integer)
+    addapphours = Column(Integer)
+    fcs = Column(Integer)
+    service_showavcap = Column(Integer)
+    ###################################
+    language = Column(String(255))
+    appfuture = Column(Integer)
+    appdeadline = Column(Integer)
+    appdeadlinewm = Column(Integer)
+    caching = Column(Boolean)
+    cluster = Column(Boolean)
+    onetimebooking = Column(Boolean)
+    latf = Column(Integer)
+    z = Column(Integer)
+    agb = Column(Boolean)
+    agblink = Column(Text)
+    dp = Column(Boolean)
+    dplink = Column(Text)
+    nea = Column(Integer)
+    enablefeedback = Column(Boolean)
+    street = Column(String(255))
+    zip = Column(String(255))
+    city = Column(String(255))
+    timezone = Column(String(255))
+    canceldeadline_settings = Column(Integer)
+    appointmentreminderhours = Column(Integer)
+    appointmentreminderhours2 = Column(Integer)
+    customerconfirm = Column(Boolean)
+    customerconfirmtime = Column(Integer)
+    bl = Column(Boolean)
+    storeip = Column(Boolean)
+    apw = Column(Boolean)
+    showreminder = Column(Boolean)
+    vfields = Column(Integer)
+    vservices = Column(Integer)
+    fillcalendarstrategy = Column(Integer)
+    settings_showavcap = Column(Boolean)
+
+class UserSession(Base):
+    __tablename__ = "user_sessions"
+
+    session_id = Column(String(255), primary_key=True, index=True)
+    created_at = Column(DateTime(timezone=True), default=lambda: datetime.now(timezone.utc))
+    is_searching = Column(Boolean, default=False)
+    telegram_chat_id = Column(BigInteger, nullable=True)

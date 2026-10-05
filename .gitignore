@@ -1,0 +1,24 @@
+# Environments
+.env
+.venv/
+venv/
+env/
+
+# IDEs and Editors
+.vscode/
+.devcontainer/
+.idea/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Logs
+fast_api/logs/
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db

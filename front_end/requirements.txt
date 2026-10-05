@@ -1,0 +1,5 @@
+streamlit
+extra-streamlit-components
+phonenumbers
+pydantic
+requests
